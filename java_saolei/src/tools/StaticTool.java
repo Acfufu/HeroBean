@@ -24,8 +24,8 @@ public class StaticTool {
 	public static ImageIcon imageIcon = new ImageIcon("./image/icon.gif");//主界面
 	public static Icon iconBlank = new ImageIcon("./image/blank.gif");//未点击雷
 	public static Icon bloodIcon = new ImageIcon("./image/blood.gif");//红雷
-	public static Icon icon0 = new ImageIcon("./image/0.gif");//重新开始的笑脸
-	public static Icon clickIcon = new ImageIcon("./image/face2.gif");
+	public static Icon icon0 = new ImageIcon("./image/0.gif");
+	public static Icon clickIcon = new ImageIcon("./image/face2.gif");//重新开始的笑脸
 	public static Icon smileIcon = new ImageIcon("./image/face0.gif");
 	public static Icon faultFaceIcon = new ImageIcon("./image/face3.gif");
 	public static Icon winFaceIcon = new ImageIcon("./image/face4.gif");
@@ -36,6 +36,7 @@ public class StaticTool {
 	public static Icon errorBombIcon = new ImageIcon("./image/error.gif");
 	public static Icon blackBombIcon = new ImageIcon("./image/mine.gif");
 	public static Icon holeIcon = new ImageIcon("./image/hole.gif");//后门进入
+	public static Icon stopIcon = new ImageIcon("./image/stop.gif");//新增加的暂停图标
 
 	static {
 		for (int i = 0; i < num.length; i++) {

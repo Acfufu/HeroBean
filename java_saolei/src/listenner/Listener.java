@@ -60,7 +60,8 @@ public class Listener implements MouseListener {
 			}
 			mainFrame.getFaceJPanel().getLabelFace()
 					.setIcon(StaticTool.clickIcon);//左键点击后表情更换
-		} else if (e.getModifiers() == InputEvent.BUTTON3_MASK//右键点击事件
+		}
+		else if (e.getModifiers() == InputEvent.BUTTON3_MASK//右键点击事件
 				&& !mineLable.isExpendTag()) {
 			if (mineLable.getRightClickCount() == 0) {
 				mineLable.setIcon(StaticTool.flagIcon);//棋子设置

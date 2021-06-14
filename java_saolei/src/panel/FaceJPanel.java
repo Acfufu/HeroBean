@@ -131,6 +131,10 @@ public class FaceJPanel extends JPanel {
 				labelFace.setIcon(StaticTool.downSmileIcon);
 				mainFrame.getTimer().stop();
 			}
+			else if (e.getModifiers() == InputEvent.BUTTON3_MASK) {//ÓÒ¼üµã»÷Ð¡Á³
+				labelFace.setIcon(StaticTool.stopIcon);
+				mainFrame.getTimer().stop();
+			}
 		}
 
 		@Override

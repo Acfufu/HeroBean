@@ -28,14 +28,11 @@ public class HeroBean implements Comparable<HeroBean> {
 
 	@Override
 	public int compareTo(HeroBean o) {
-
 		return this.time - o.time;
-
 	}
 
 	@Override
-	public String toString() {
-
+	public String toString() {//获取用户姓名
 		return time + "秒\t" + name;
 	}
 

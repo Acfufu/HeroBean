@@ -2,6 +2,7 @@ package main;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.io.Serial;
 
 import javax.swing.JFrame;
 import javax.swing.Timer;
@@ -15,24 +16,16 @@ import timer.TimerListener;
 import tools.StaticTool;
 
 public class MainFrame extends JFrame {
-	/**
-	 * 
-	 */
+	@Serial
 	private static final long serialVersionUID = 1L;
-
 	private BombJMenuBar menuBar = new BombJMenuBar(this);
-
 	private FaceJPanel faceJPanel = new FaceJPanel(this);
-
 	private BombJPanel bombJPanel = new BombJPanel(this);
-
 	private TimerListener timerListener = new TimerListener(this);
-
 	private Timer timer = new Timer(1000, timerListener);
 
 	public MainFrame() {
 		init();
-
 		this.setIconImage(StaticTool.imageIcon.getImage());
 		this.setTitle("扫雷");
 		this.setSize(new Dimension(220, 300));
@@ -41,7 +34,6 @@ public class MainFrame extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.pack();
 		this.setVisible(true);
-
 	}
 
 	private void init() {
@@ -51,11 +43,9 @@ public class MainFrame extends JFrame {
 
 	}
 
-	public void reStartGame() {
-
+	public void reStartGame() {//重启游戏
 		this.remove(faceJPanel);
-		this.remove(bombJPanel);
-
+		this.remove(bombJPanel);//更新信息
 		StaticTool.bombCount = StaticTool.allcount;
 		StaticTool.timecount = 0;
 		StaticTool.isStart = false;
@@ -83,26 +73,13 @@ public class MainFrame extends JFrame {
 		return timer;
 	}
 
-	/**
-	 * @param args
-	 */
+
 	public static void main(String[] args) {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UnsupportedLookAndFeelException e) {
-			// TODO Auto-generated catch block
+		} catch (Throwable e) {
 			e.printStackTrace();
 		}
-
 		new MainFrame();
 
 	}

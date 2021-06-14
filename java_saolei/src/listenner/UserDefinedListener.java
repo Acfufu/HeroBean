@@ -13,16 +13,13 @@ import dialog.UserDefinedJDialog;
 
 public class UserDefinedListener implements ActionListener {
 	UserDefinedJDialog userDefinedJDialog;
-
 	MainFrame mainFrame;
-
 	public UserDefinedListener(UserDefinedJDialog userDefinedJDialog,
 			MainFrame mainFrame) {
 		this.mainFrame = mainFrame;
 		this.userDefinedJDialog = userDefinedJDialog;
 
 	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == userDefinedJDialog.getButtonCancer()) {
@@ -32,7 +29,7 @@ public class UserDefinedListener implements ActionListener {
 			String highT = userDefinedJDialog.getjTextFieldHigh().getText();
 			Pattern pattern = Pattern.compile("^[0-9]{1,3}$");
 			Matcher matcher = pattern.matcher(highT);
-			int row = 0;
+			int row;
 			if (!matcher.matches()) {
 				userDefinedJDialog.getjLabelMessage()
 						.setText("输入的行数范围应在9-30之间");
@@ -47,7 +44,7 @@ public class UserDefinedListener implements ActionListener {
 
 			}
 			String colT = userDefinedJDialog.getjTextFieldWide().getText();
-			int col = 0;
+			int col;
 			try {
 				col = Integer.parseInt(colT);
 				if (col < 9 || col > 30) {
@@ -62,7 +59,7 @@ public class UserDefinedListener implements ActionListener {
 			}
 
 			String mineT = userDefinedJDialog.getjTextFieldBomb().getText();
-			int mine = 0;
+			int mine;
 			try {
 				mine = Integer.parseInt(mineT);
 				if (mine < 10) {

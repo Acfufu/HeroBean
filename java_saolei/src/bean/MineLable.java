@@ -3,17 +3,14 @@ package bean;
 import javax.swing.JLabel;
 
 public class MineLable extends JLabel {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	private boolean mineTag;
-	private boolean expendTag;
-	private boolean flagTag;
-	private int rowx;
+	private boolean mineTag;//地雷标志
+	private boolean expendTag;//空格标志
+	private boolean flagTag;//棋子标志
+	private int rowx;//鼠标位置
 	private int coly;
-	private int counAround;
-	private int rightClickCount;
+	private int counAround;//周围标志
+	private int rightClickCount;//右键点击数
 
 	public MineLable(int x, int y) {
 		this.rowx = x;

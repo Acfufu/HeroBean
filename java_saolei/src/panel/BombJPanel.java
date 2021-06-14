@@ -2,6 +2,7 @@ package panel;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.io.Serial;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -15,9 +16,7 @@ import tools.StaticTool;
 import bean.MineLable;
 
 public class BombJPanel extends JPanel {
-	/**
-	 * 
-	 */
+	@Serial
 	private static final long serialVersionUID = 1L;
 	MineLable[][] labels = new MineLable[StaticTool.allrow][StaticTool.allcol];
 	private Listener listener;
@@ -27,13 +26,10 @@ public class BombJPanel extends JPanel {
 		this.mainFrame = mainFrame;
 		this.setLayout(new GridLayout(StaticTool.allrow, StaticTool.allcol));
 		init();
-
 	}
 
-	private void init() {
-
+	private void init() {//遍历所有格子，并对格子进行图标设定和监听绑定
 		listener = new Listener(labels, mainFrame);
-
 		for (int i = 0; i < labels.length; i++) {
 			for (int j = 0; j < labels[i].length; j++) {
 				labels[i][j] = new MineLable(i, j);
@@ -43,14 +39,11 @@ public class BombJPanel extends JPanel {
 			}
 		}
 		Border borderLow = BorderFactory.createLoweredBevelBorder();
-
 		Border borderEmpty = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		Border borderCom1 = BorderFactory.createCompoundBorder(borderEmpty,
 				borderLow);
-
 		this.setBorder(borderCom1);
 		this.setBackground(Color.LIGHT_GRAY);
-
 	}
 
 }

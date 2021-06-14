@@ -3,8 +3,7 @@ package dialog;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.io.Serial;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -20,40 +19,26 @@ import tools.StaticTool;
 import main.MainFrame;
 
 public class AboutSweeping extends JDialog {
-
-	/**
-	 * 
-	 */
+	@Serial
 	private static final long serialVersionUID = 1L;
-
 	private JLabel labelIcon;
-
 	private JLabel labelOne;
-
 	private JLabel labelTwo;
-
 	private JLabel labelThree;
-
 	private JLabel labelFour;
-
 	private JLabel labelFive;
-
+	private JLabel labelSix;//个人信息加入
+	private JLabel labelSeven;//重新制作的时间的加入
 	private Box boxOne;
-
 	private Box boxTwo;
-
 	private Box boxThree;
-
 	private Box boxFour;
-
 	private Box boxFive;
-
+	private Box boxSix;//个人信息加入
+	private Box boxSeven;//重新制作的时间的加入
 	private JPanel panelT;
-
-	AboutSweeping sweeping = null;
-
+	AboutSweeping sweeping;
 	public AboutSweeping(MainFrame mainFrame) {
-
 		super(mainFrame);
 		sweeping = this;
 		this.setTitle("关于扫雷");
@@ -63,9 +48,7 @@ public class AboutSweeping extends JDialog {
 		this.setLocationRelativeTo(null);
 		this.setModal(true);
 		this.setVisible(true);
-
 	}
-
 	private JPanel getPanel() {
 		JPanel panel = new JPanel();
 		labelIcon = new JLabel(StaticTool.imageIcon);
@@ -86,21 +69,22 @@ public class AboutSweeping extends JDialog {
 		labelFive = new JLabel("制作时间：2012.6.1      ");
 		boxFive = Box.createHorizontalBox();
 		boxFive.add(labelFive);
+		labelSix = new JLabel("后续完善人：汕头大学张雷明");
+		boxSix = Box.createHorizontalBox();
+		boxSix.add(labelSix);
+		labelSeven = new JLabel("后续完善时间：2021.6     ");
+		boxSeven = Box.createHorizontalBox();
+		boxSeven.add(labelSeven);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		panel.add(boxOne);
 		panel.add(boxTwo);
 		panel.add(boxThree);
 		panel.add(boxFour);
 		panel.add(boxFive);
+		panel.add(boxSix);
+		panel.add(boxSeven);
 		JButton button = new JButton("确定");
-		button.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				sweeping.dispose();
-
-			}
-		});
+		button.addActionListener(e -> sweeping.dispose());
 		JPanel panel1 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		panel1.add(button);
 		panel.add(panel1);

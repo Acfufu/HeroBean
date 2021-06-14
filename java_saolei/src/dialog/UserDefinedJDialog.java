@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.Serial;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,11 +29,9 @@ import tools.StaticTool;
 import listenner.UserDefinedListener;
 import main.MainFrame;
 
-public class UserDefinedJDialog extends JDialog {
+public class UserDefinedJDialog extends JDialog {//用户自定义雷区
 
-	/**
-	 * 
-	 */
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private JLabel jLabelHigh = new JLabel("高度： ");

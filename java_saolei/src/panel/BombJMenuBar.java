@@ -2,6 +2,7 @@ package panel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serial;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -16,22 +17,14 @@ import tools.StaticTool;
 
 import main.MainFrame;
 
-public class BombJMenuBar extends JMenuBar {
-	/**
-	 * 
-	 */
+public class BombJMenuBar extends JMenuBar {//游戏界面的菜单导航条
+	@Serial
 	private static final long serialVersionUID = 1L;
-
 	JMenu menuGame = new JMenu("游戏(G)");
-
 	JMenu menuHelp = new JMenu("帮助(H)");
-
 	JMenuItem menuItemStart = new JMenuItem("开局");
-
 	JMenuItem menuItemC = new JMenuItem("初级");
-
 	JMenuItem menuItemZ = new JMenuItem("中级");
-
 	JMenuItem menuItemG = new JMenuItem("高级");
 
 	JMenu menuHero = new JMenu("英雄榜");
@@ -57,126 +50,70 @@ public class BombJMenuBar extends JMenuBar {
 		// 菜单项加入到菜单
 		menuGame.add(menuItemStart);
 
-		menuItemStart.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				mainFrame.reStartGame();
-			}
-		});
+		menuItemStart.addActionListener(e -> mainFrame.reStartGame());
 
 		menuGame.addSeparator();// 菜单加入分割线
 
 		menuGame.add(menuItemC);
-		menuItemC.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				StaticTool.allrow = 9;
-				StaticTool.allcol = 9;
-				StaticTool.allcount = 10;
-				mainFrame.reStartGame();
-			}
+		menuItemC.addActionListener(e -> {
+			StaticTool.allrow = 9;//初级界面的宽
+			StaticTool.allcol = 9;//初级界面的长
+			StaticTool.allcount = 10;//初级界面的雷数量
+			mainFrame.reStartGame();
 		});
 
 		menuGame.add(menuItemZ);
-		menuItemZ.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				StaticTool.allrow = 16;
-				StaticTool.allcol = 16;
-				StaticTool.allcount = 40;
-				mainFrame.reStartGame();
-			}
+		menuItemZ.addActionListener(e -> {
+			StaticTool.allrow = 16;//中级界面的宽
+			StaticTool.allcol = 16;//中级界面的长
+			StaticTool.allcount = 40;//中级界面的雷数量
+			mainFrame.reStartGame();
 		});
 
 		menuGame.add(menuItemG);
-		menuItemG.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				StaticTool.allrow = 16;
-				StaticTool.allcol = 30;
-				StaticTool.allcount = 99;
-				mainFrame.reStartGame();
-			}
+		menuItemG.addActionListener(e -> {
+			StaticTool.allrow = 16;//高级界面的宽
+			StaticTool.allcol = 30;//高级界面的长
+			StaticTool.allcount = 99;//高级界面的雷数量
+			mainFrame.reStartGame();
 		});
 		menuGame.addSeparator();// 菜单加入分割线
 		menuGame.add(menuItemCustom);
-		menuItemCustom.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new UserDefinedJDialog(mainFrame);
-
-			}
+		menuItemCustom.addActionListener(e -> {
+			new UserDefinedJDialog(mainFrame);//自定义雷
 		});
 
 		menuGame.addSeparator();// 菜单加入分割线
 		menuGame.add(menuHero);
 		menuHero.add(menuHeroC);
-		menuHeroC.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new HeroDialog(1, mainFrame);
-
-			}
-		});
+		menuHeroC.addActionListener(e -> new HeroDialog(1, mainFrame));
 		menuHero.add(menuHeroZ);
-		menuHeroZ.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new HeroDialog(2, mainFrame);
-
-			}
-		});
+		menuHeroZ.addActionListener(e -> new HeroDialog(2, mainFrame));
 		menuHero.add(menuHeroG);
-		menuHeroG.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new HeroDialog(3, mainFrame);
-
-			}
-		});
+		menuHeroG.addActionListener(e -> new HeroDialog(3, mainFrame));
 
 		menuGame.addSeparator();// 菜单加入分割线
-		menuGame.add(menuItemExit);
-		menuItemExit.addActionListener(new ActionListener() {
+		menuGame.add(menuItemExit);//退出按钮
+		menuItemExit.addActionListener(e -> System.exit(JFrame.EXIT_ON_CLOSE));
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.exit(JFrame.EXIT_ON_CLOSE);
-
-			}
-		});
-
-		menuHelp.add(menuItemAbout);
-		menuItemAbout.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new AboutSweeping(mainFrame);
-
-			}
-		});
+		menuHelp.add(menuItemAbout);//关于扫雷
+		menuItemAbout.addActionListener(e -> new AboutSweeping(mainFrame));
 		menuHelp.add(menuItemHole);
-		menuItemHole.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
+		//后门模式（实际上就是把雷标记出来）
+		menuItemHole.addActionListener(e -> {//更新点：在不重启游戏的情况下自由使用和关闭后门
+			if (StaticTool.isHole = false){
 				StaticTool.isHole = true;
-
+				mainFrame.reStartGame();
+				menuItemHole.setText("取消后门");
+			}else{
+				mainFrame.reStartGame();
+				menuItemHole.setText("后门进入");
+				StaticTool.isHole = false;
 			}
 		});
 		// 菜单加入到菜单条
 		this.add(menuGame);
 		this.add(menuHelp);
-
 	}
 
 }

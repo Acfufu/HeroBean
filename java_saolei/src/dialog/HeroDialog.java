@@ -2,6 +2,7 @@ package dialog;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.io.Serial;
 
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -15,18 +16,12 @@ import tools.StaticTool;
 import bean.HeroBean;
 
 public class HeroDialog extends JDialog {
-
-	/**
-	 * 
-	 */
+	@Serial
 	private static final long serialVersionUID = 1L;
-	/**
-	 * 
-	 */
 
 	private JPanel panel = null;
 	JTextArea textArea = new JTextArea();
-	private int level = 0;
+	private int level;
 
 	public HeroDialog(int level, MainFrame mainFrame) {
 		super(mainFrame);
@@ -52,7 +47,7 @@ public class HeroDialog extends JDialog {
 		return panel;
 	}
 
-	private void addMessage() {
+	private void addMessage() {//扫雷英雄榜信息更新
 		if (level == 1) {
 			for (HeroBean heroBean : StaticTool.treeSetC) {
 				textArea.append(heroBean.toString() + "\n");
